@@ -75,3 +75,5 @@ bun run preview
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
 
 Check out the [ionic-nuxt documentation](https://ionic.nuxtjs.org/get-started/introduction) for more information.
+
+Check out the [YT ionic-nuxt install](https://www.youtube.com/watch?v=tDYPZvjVTcc&ab_channel=AaronSaunders) for more information.
