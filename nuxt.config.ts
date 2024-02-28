@@ -9,5 +9,9 @@ export default defineNuxtConfig({
 			autoprefixer: {},
 		},
 	},
-	modules: ["@pinia/nuxt", "@pinia-plugin-persistedstate/nuxt"],
+	modules: [
+		"@nuxtjs/supabase",
+		"@pinia/nuxt",
+		"@pinia-plugin-persistedstate/nuxt",
+	],
 });

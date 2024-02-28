@@ -26,6 +26,7 @@
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
+    "@nuxtjs/supabase": "^1.1.6",
     "@pinia-plugin-persistedstate/nuxt": "^1.2.0",
     "autoprefixer": "^10.4.17",
     "postcss": "^8.4.35",
