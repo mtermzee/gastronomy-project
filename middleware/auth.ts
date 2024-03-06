@@ -1,12 +1,11 @@
+import { useAuth } from "~/composables/useAuth";
+
 export default defineNuxtRouteMiddleware((to, from) => {
-	const user = useSupabaseUser();
+	const user = useAuth().isAuthenticated();
 
-	if (!user.value) {
-		return navigateTo("/login");
-	}
-
-	if (user.value && (to.path === "/login" || to.path === "/register")) {
-		return navigateTo("/");
+	if (!user) {
+		console.log("User is authenticated: ", user);
+		//return navigateTo("/login");
 	}
 });
 
