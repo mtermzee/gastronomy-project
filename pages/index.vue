@@ -6,10 +6,27 @@
 			perferendis ipsa quae non incidunt, officia dolor ducimus hic corporis.
 			Repudiandae.
 		</p>
+		<div>
+			<p>Name: {{ name }}</p>
+			<p>Count: {{ store.count }}</p>
+			<p>Double Count: {{ doubleCount }}</p>
+			<button @click="increment">Increment</button>
+			<button @click="decrement">Decrement</button>
+			<button @click="reset">Reset</button>
+		</div>
 		<NuxtLink to="/about">About</NuxtLink>
 	</div>
 </template>
 
-<script setup></script>
+<script setup>
+import { useCounterStore } from '~/store/counter'
+import { storeToRefs } from 'pinia'
+const store = useCounterStore()
+
+const { name, doubleCount } = storeToRefs(store)
+
+const { increment, decrement, reset } = store
+
+</script>
 
 <style scoped></style>
