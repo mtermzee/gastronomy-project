@@ -87,3 +87,5 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 Check out the [ionic-nuxt documentation](https://ionic.nuxtjs.org/get-started/introduction) for more information.
 
 Check out the [YT ionic-nuxt install](https://www.youtube.com/watch?v=tDYPZvjVTcc&ab_channel=AaronSaunders) for more information.
+
+Check out the [Supabase Authentication](https://supabase.nuxtjs.org/authentication) for more information.
