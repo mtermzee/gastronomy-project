@@ -1,8 +1,12 @@
 export default defineNuxtRouteMiddleware((to, from) => {
 	const user = useSupabaseUser();
 
-	if (!user) {
+	if (!user.value) {
 		return navigateTo("/login");
+	}
+
+	if (user.value && (to.path === "/login" || to.path === "/register")) {
+		return navigateTo("/");
 	}
 });
 

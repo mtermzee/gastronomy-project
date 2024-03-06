@@ -17,6 +17,10 @@
 </template>
 
 <script lang="ts" setup>
+definePageMeta({
+    middleware: ['auth']
+});
+
 const client = useSupabaseClient();
 const router = useRouter();
 

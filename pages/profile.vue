@@ -15,9 +15,9 @@
 </template>
 
 <script lang="ts" setup>
-/*definePageMeta({
+definePageMeta({
     middleware: ['auth']
-});*/
+})
 
 const user = useSupabaseUser();
 const client = useSupabaseClient();

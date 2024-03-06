@@ -4,8 +4,12 @@
 	</div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import type { Product } from "~/types/Product";
+
+definePageMeta({
+	middleware: ['auth']
+})
 
 const { id } = useRoute().params;
 const product = ref<Product>();

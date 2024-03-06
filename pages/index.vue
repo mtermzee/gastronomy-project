@@ -18,9 +18,14 @@
 	</div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { useCounterStore } from '~/store/counter'
 import { storeToRefs } from 'pinia'
+
+definePageMeta({
+	middleware: ['auth']
+})
+
 const store = useCounterStore()
 
 const { name, doubleCount } = storeToRefs(store)
