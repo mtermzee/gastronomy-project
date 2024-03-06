@@ -32,7 +32,7 @@ async function logout() {
             throw error;
         }
         router.push('/login');
-    } catch (error) {
+    } catch (error: any) {
         console.error(error.message);
     }
 }

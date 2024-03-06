@@ -31,7 +31,7 @@ async function signUp() {
             throw error;
         }
         successMsg.value = 'Check your email for the confirmation link';
-    } catch (error) {
+    } catch (error: any) {
         errorMsg.value = error.message;
     }
 }

@@ -31,7 +31,7 @@ async function signIn() {
             throw error;
         }
         router.push('/profile');
-    } catch (error) {
+    } catch (error: any) {
         errorMsg.value = error.message;
     }
 }
