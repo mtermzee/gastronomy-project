@@ -1,5 +1,5 @@
 <template>
-	<div class="flex flex-col w-4/5 m-auto justify-center items-start">
+	<div class="flex w-4/5 mx-auto justify-center items-start">
 		<ProductDetails :data="product" />
 	</div>
 </template>
