@@ -2,10 +2,16 @@ import { useAuth } from "~/composables/useAuth";
 
 export default defineNuxtRouteMiddleware((to, from) => {
 	const user = useAuth().isAuthenticated();
+	const publicRoutes = ["/login", "/register"];
 
-	if (!user) {
-		console.log("User is authenticated: ", user);
-		//return navigateTo("/login");
+	// If the user is not authenticated can access only public routes
+	if (!user && !publicRoutes.includes(to.path)) {
+		return navigateTo("/login");
+	}
+
+	// If the user is authenticated can't access public routes
+	if (user && publicRoutes.includes(to.path)) {
+		return navigateTo("/");
 	}
 });
 
