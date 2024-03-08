@@ -31,7 +31,7 @@ async function logout() {
         if (error) {
             throw error;
         }
-        router.push('/login');
+        router.push('/auth/login');
     } catch (error: any) {
         console.error(error.message);
     }

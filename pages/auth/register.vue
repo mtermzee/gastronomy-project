@@ -10,7 +10,8 @@
                 <button type="submit" class="bg-blue-500 text-white py-2 rounded-md">Sign Up</button>
                 <p class="text-red-500 mt-4">{{ errorMsg }}</p>
                 <p class="text-green-500 mt-4">{{ successMsg }}</p>
-                <p class="mt-4">Already have an account? <nuxt-link to="/login" class="text-blue-500">Login</nuxt-link></p>
+                <p class="mt-4">Already have an account? <nuxt-link to="/auth/login"
+                        class="text-blue-500">Login</nuxt-link></p>
             </form>
         </div>
     </div>

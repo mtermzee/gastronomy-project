@@ -9,7 +9,8 @@
                     class="border border-gray-300 px-3 py-2 rounded-md mb-4" />
                 <button type="submit" class="bg-blue-500 text-white py-2 rounded-md">Login</button>
                 <p class="text-red-500 mt-4">{{ errorMsg }}</p>
-                <p class="mt-4">Don't have an account? <nuxt-link to="/register" class="text-blue-500">Sign Up</nuxt-link>
+                <p class="mt-4">Don't have an account? <nuxt-link to="/auth/register" class="text-blue-500">Sign
+                        Up</nuxt-link>
                 </p>
             </form>
         </div>
@@ -34,7 +35,7 @@ async function signIn() {
         if (error) {
             throw error;
         }
-        router.push('/profile');
+        router.push('/user/profile');
     } catch (error: any) {
         errorMsg.value = error.message;
     }
