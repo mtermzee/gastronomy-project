@@ -19,6 +19,7 @@
     "@capacitor/ios": "5.7.0",
     "@capacitor/keyboard": "5.0.8",
     "@capacitor/status-bar": "5.0.7",
+    "@formkit/auto-animate": "^0.8.2",
     "@pinia/nuxt": "^0.5.1",
     "nuxt": "^3.10.3",
     "pinia": "^2.1.7",

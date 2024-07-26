@@ -13,6 +13,7 @@ export default defineNuxtConfig({
 		"@nuxtjs/supabase",
 		"@pinia/nuxt",
 		"@pinia-plugin-persistedstate/nuxt",
+		"@formkit/auto-animate/nuxt",
 	],
 	supabase: {
 		redirect: false,

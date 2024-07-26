@@ -26,6 +26,9 @@ dependencies:
   '@capacitor/status-bar':
     specifier: 5.0.7
     version: 5.0.7(@capacitor/core@5.7.0)
+  '@formkit/auto-animate':
+    specifier: ^0.8.2
+    version: 0.8.2
   '@pinia/nuxt':
     specifier: ^0.5.1
     version: 0.5.1(vue@3.4.20)
@@ -883,6 +886,10 @@ packages:
   /@fastify/busboy@2.1.0:
     resolution: {integrity: sha512-+KpH+QxZU7O4675t3mnkQKcZZg56u+K/Ct2K+N2AZYNVK8kyeo/bI18tI8aPm3tvNNRyTWfj6s5tnGNlcbQRsA==}
     engines: {node: '>=14'}
+    dev: false
+
+  /@formkit/auto-animate@0.8.2:
+    resolution: {integrity: sha512-SwPWfeRa5veb1hOIBMdzI+73te5puUBHmqqaF1Bu7FjvxlYSz/kJcZKSa9Cg60zL0uRNeJL2SbRxV6Jp6Q1nFQ==}
     dev: false
 
   /@ionic/cli-framework-output@2.2.8:
