@@ -23,10 +23,9 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div v-for="smoothie in smoothies" :key="smoothie.id">
-                    <SmoothieCard :data="smoothie" />
+                    <SmoothieCard :data="smoothie" @delete="handleDelete" />
                 </div>
             </div>
-
         </div>
     </div>
 </template>
@@ -54,6 +53,14 @@ async function fetchSmoothies() {
     isLoading.value = false;
 }
 
+async function handleDelete(id: number) {
+    const { error } = await client.from('smoothies').delete().eq('id', id);
+    if (error) {
+        console.error(error.message);
+    } else {
+        smoothies.value = smoothies.value.filter(smoothie => smoothie.id !== id);
+    }
+}
 </script>
 
 <style></style>
