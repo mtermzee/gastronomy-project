@@ -48,6 +48,10 @@
 import { ref } from 'vue';
 import type { Smoothie } from "~/types/Smoothie";
 
+definePageMeta({
+    middleware: ['auth']
+})
+
 const client = useSupabaseClient();
 const smoothies = ref([] as Smoothie[]);
 const isLoading = ref(false);

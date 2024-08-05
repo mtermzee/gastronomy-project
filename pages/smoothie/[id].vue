@@ -40,6 +40,10 @@ import { ref, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import type { Smoothie } from "~/types/Smoothie";
 
+definePageMeta({
+    middleware: ['auth']
+})
+
 const router = useRouter();
 const route = useRoute();
 

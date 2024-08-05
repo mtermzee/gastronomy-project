@@ -7,6 +7,10 @@
 <script lang="ts" setup>
 import type { Smoothie } from "~/types/Smoothie";
 
+definePageMeta({
+    middleware: ['auth']
+})
+
 const { id } = useRoute().params;
 const client = useSupabaseClient();
 const smoothie = ref({} as Smoothie);
