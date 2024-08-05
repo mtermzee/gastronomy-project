@@ -4,4 +4,5 @@ export interface Smoothie {
 	method: string;
 	rating: number;
 	created_at: string;
+	updated_at: string;
 }

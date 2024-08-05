@@ -5,21 +5,21 @@
 
             <form @submit.prevent="handleSubmit" class="w-full">
                 <div class="relative z-0 w-full mb-5 group">
-                    <input type="text" name="floating_title" id="floating_title"
+                    <input type="text" name="floating_title" id="floating_title" v-model="smoothie.title"
                         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         placeholder=" " required />
                     <label for="floating_title"
                         class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Title</label>
                 </div>
                 <div class="relative z-0 w-full mb-5 group">
-                    <input type="text" name="floating_method" id="floating_method"
+                    <input type="text" name="floating_method" id="floating_method" v-model="smoothie.method"
                         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         placeholder=" " required />
                     <label for="floating_method"
                         class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Method</label>
                 </div>
                 <div class="relative z-0 w-full mb-5 group">
-                    <input type="number" name="rating" id="floating_rating"
+                    <input type="number" name="rating" id="floating_rating" v-model="smoothie.rating"
                         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         placeholder=" " required />
                     <label for="floating_rating"
@@ -35,9 +35,10 @@
     </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { ref, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
+import type { Smoothie } from "~/types/Smoothie";
 
 const router = useRouter();
 const route = useRoute();
@@ -45,34 +46,58 @@ const route = useRoute();
 const id = route.params.id;
 const isEditing = id !== 'new';
 
-const item = ref({ title: '', method: '', rating: 0 });
+const client = useSupabaseClient();
+const smoothie = ref({} as Smoothie);
+
 
 onMounted(async () => {
     if (isEditing) {
-        const response = await fetch(`/api/items/${id}`);
-        if (response.ok) {
-            item.value = await response.json();
+        const { data, error } = await client.from('smoothies').select('*').eq('id', id).single();
+        if (error) {
+            console.error(error.message);
         } else {
-            console.error('Failed to fetch item data');
+            smoothie.value = data;
         }
     }
 });
 
 const handleSubmit = async () => {
-    const payload = JSON.stringify(item.value);
-    const options = {
-        method: isEditing ? 'PUT' : 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: payload,
-    };
+    try {
+        // Prepare the smoothie object with updated timestamp for editing
+        const smoothieData = ref({
+            ...smoothie.value,
+            updated_at: new Date().toISOString()
+        });
 
-    const response = await fetch(isEditing ? `/api/items/${id}` : '/api/items', options);
-    if (response.ok) {
-        router.push('/items');
-    } else {
-        console.error(`Failed to ${isEditing ? 'update' : 'create'} item`);
+        let response;
+
+        if (isEditing) {
+            // Update existing smoothie
+            const { data, error } = await client.from('smoothies').update([smoothieData.value]).eq('id', id);
+            if (error) {
+                throw new Error(error.message);
+            }
+            response = data;
+        } else {
+            // Create new smoothie
+            const { data, error } = await client.from('smoothies').insert([smoothie.value]);
+            if (error) {
+                throw new Error(error.message);
+            }
+            response = data;
+        }
+
+        // Show success message and redirect
+        alert(`Smoothie ${isEditing ? 'updated' : 'created'} successfully`);
+        router.push('/smoothie'); // Redirect to the desired route
+
+    } catch (error) {
+        console.error('An error occurred:', error.message);
+        alert('Failed to save smoothie. Please try again.');
     }
 };
+
+
 </script>
 
 <style scoped>
