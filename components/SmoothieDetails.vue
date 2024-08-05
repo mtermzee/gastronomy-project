@@ -5,6 +5,8 @@
             <p>{{ data.title }}</p>
             <p>{{ data.method }}</p>
             <p>{{ data.created_at }}</p>
+            <p v-if="data.user_id !== user?.id" class="text-red-500">You are not allowed to edit this smoothie</p>
+            <p v-else class="text-green-500">You can edit this smoothie</p>
         </div>
     </div>
 </template>
@@ -16,6 +18,7 @@ defineProps({
         required: true,
     },
 });
+const user = useSupabaseUser();
 </script>
 
 <style></style>

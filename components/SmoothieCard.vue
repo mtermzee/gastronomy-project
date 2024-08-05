@@ -9,15 +9,18 @@
             </ul>
         </NuxtLink>
         <div class="absolute bottom-4 right-4 flex space-x-2">
-            <button @click="editItem" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+            <button @click="editItem" :disabled="isOwner"
+                :class="['px-4 py-2 rounded', isOwner ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-600 text-white']">
                 Edit
             </button>
-            <button @click="deleteItem" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+            <button @click="deleteItem" :disabled="isOwner"
+                :class="['px-4 py-2 rounded', isOwner ? 'bg-gray-400 cursor-not-allowed' : 'bg-red-500 hover:bg-red-600 text-white']">
                 Delete
             </button>
         </div>
     </div>
 </template>
+
 
 <script lang="ts" setup>
 import { defineProps, defineEmits } from 'vue'
@@ -30,19 +33,28 @@ const props = defineProps({
     },
 });
 
+const user = useSupabaseUser();
+
 const emit = defineEmits(['edit', 'delete']);
 const router = useRouter();
 
+const isOwner = computed(() => user.value?.id !== props.data.user_id);
+
 const editItem = () => {
-    router.push(`/smoothie/${props.data.id}`);
+    if (!isOwner.value) {
+        router.push(`/smoothie/${props.data.id}`);
+    }
 };
 
 const deleteItem = () => {
-    emit('delete', props.data.id);
-    // Or, you can handle deletion directly here, e.g. with an API call
-    // makeApiCallToDeleteItem(props.data.id);
+    if (!isOwner.value) {
+        emit('delete', props.data.id);
+        // Or, you can handle deletion directly here, e.g. with an API call
+        // makeApiCallToDeleteItem(props.data.id);
+    }
 };
 </script>
+
 
 <style>
 /* Add any additional styles here if needed */
