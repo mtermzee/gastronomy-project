@@ -1,6 +1,6 @@
 <template>
     <div class="bg-gray-900">
-        <div class="flex justify-center h-[calc(100vh-18rem)] md:h-[calc(100vh-11rem)]">
+        <div class="flex justify-center h-[calc(100vh-18rem)] md:h-[calc(100vh-10rem)]">
             <div class="hidden lg:block lg:w-2/3 relative">
                 <img class="h-full w-full object-cover" src="~/assets/images/brenda-godinez-CrK843Pl9a4-unsplash.jpg"
                     alt="Background Image">
