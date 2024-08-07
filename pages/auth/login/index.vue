@@ -24,6 +24,13 @@
 
                     <div class="mt-8">
                         <form @submit.prevent="signIn">
+                            <div v-if="errorMsg" class="mb-4 text-sm text-red-600">
+                                {{ errorMsg }}
+                            </div>
+                            <div v-if="successMsg" class="mb-4 text-sm text-green-600">
+                                {{ successMsg }}
+                            </div>
+
                             <div>
                                 <label for="email" class="block mb-2 text-sm text-gray-300">Email
                                     Address</label>
