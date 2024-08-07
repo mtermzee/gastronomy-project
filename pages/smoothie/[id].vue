@@ -1,6 +1,6 @@
 <template>
-    <div class="flex w-full mx-auto justify-center items-start">
-        <div class="flex flex-col items-center gap-4 w-3/4 sm:w-1/2 lg:w-1/3">
+    <div class="container px-5 py-8 md:py-16 mx-auto">
+        <div class="flex flex-col justify-center items-center">
             <h1 class="text-3xl font-bold">{{ isEditing ? 'Edit Item' : 'Create Item' }}</h1>
 
             <form @submit.prevent="handleSubmit" class="w-full">

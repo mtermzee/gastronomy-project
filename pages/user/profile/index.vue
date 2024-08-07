@@ -1,6 +1,6 @@
 <template>
-    <div class="flex w-4/5 mx-auto justify-center items-start py-36 sm:pt-44 sm:pb-60">
-        <div class="flex flex-col items-center" v-if="user">
+    <div class="container px-5 py-8 md:py-16 mx-auto">
+        <div class="flex flex-col justify-center items-start" v-if="user">
             <h1 class="text-3xl font-bold mb-4">Profile</h1>
             <p class="mb-4">Welcome, {{ user.email }}</p>
             <p class="mb-4">Your user id is: {{ user.id }}</p>

@@ -1,6 +1,8 @@
 <template>
-    <div>
-        <SmoothieDetails :data="smoothie" />
+    <div class="container px-5 py-8 md:py-16 mx-auto">
+        <div class="flex flex-col justify-center items-start">
+            <SmoothieDetails :data="smoothie" />
+        </div>
     </div>
 </template>
 

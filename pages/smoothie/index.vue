@@ -1,6 +1,6 @@
 <template>
-    <div class="flex w-4/5 mx-auto justify-center items-start">
-        <div class="flex flex-col items-center gap-4">
+    <div class="container px-5 py-8 md:py-16 mx-auto">
+        <div class="flex flex-col justify-center items-start gap-4">
             <h1 class="text-3xl font-bold">Smoothies</h1>
 
             <!-- Sorting Dropdown -->

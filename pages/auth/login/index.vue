@@ -1,5 +1,5 @@
 <template>
-    <div class="h-screen flex">
+    <div class="container px-5 py-8 md:py-16 mx-auto">
         <div class="flex-1 flex items-center justify-center bg-white">
             <form @submit.prevent="signIn" class="flex flex-col px-16 py-8 rounded-md shadow-lg max-w-screen-sm w-full">
                 <h1 class="text-3xl font-bold mb-4">Login</h1>

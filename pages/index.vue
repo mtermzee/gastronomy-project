@@ -1,5 +1,5 @@
 <template>
-	<div class="w-4/5 mx-auto flex justify-center">
+	<div class="container px-5 py-8 md:py-16 mx-auto">
 		<div class="flex flex-col justify-center items-start">
 			<h1>Index page</h1>
 			<p>
