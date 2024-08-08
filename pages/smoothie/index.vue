@@ -46,14 +46,14 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import type { Smoothie } from "~/types/Smoothie";
+import type { ISmoothie } from "~/types/ISmoothie";
 
 definePageMeta({
     middleware: ['auth']
 })
 
 const client = useSupabaseClient();
-const smoothies = ref([] as Smoothie[]);
+const smoothies = ref([] as ISmoothie[]);
 const isLoading = ref(false);
 const selectedOrder = ref('title-asc'); // Default sorting option
 

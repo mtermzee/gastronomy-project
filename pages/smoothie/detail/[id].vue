@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { Smoothie } from "~/types/Smoothie";
+import type { ISmoothie } from "~/types/ISmoothie";
 
 definePageMeta({
     middleware: ['auth']
@@ -15,7 +15,7 @@ definePageMeta({
 
 const { id } = useRoute().params;
 const client = useSupabaseClient();
-const smoothie = ref({} as Smoothie);
+const smoothie = ref({} as ISmoothie);
 
 onMounted(async () => {
     const { data, error } = await client.from('smoothies').select('*').eq('id', id).single();

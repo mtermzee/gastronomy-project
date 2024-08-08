@@ -3,7 +3,8 @@
         <NuxtLink :to="'/smoothie/detail/' + data?.id">
             <ul v-auto-animate>
                 <li class="text-2xl font-extrabold mb-4 text-green-800">{{ data.title }}</li>
-                <li class="text-gray-800 mb-3">{{ data.method }}</li>
+                <li class="text-gray-800 mb-3">{{ data.ingredients }}</li>
+                <li class="text-gray-800 mb-3">{{ data.preparation }}</li>
                 <li class="text-yellow-500 mb-3 font-medium">{{ data.rating }}</li>
                 <li class="text-gray-500 text-xs">{{ data.created_at }}</li>
             </ul>

@@ -1,7 +1,8 @@
-export interface Smoothie {
+export interface ISmoothie {
 	id: number;
 	title: string;
-	method: string;
+	ingredients: string;
+	preparation: string;
 	rating: number;
 	user_id: string;
 	created_at: string;
